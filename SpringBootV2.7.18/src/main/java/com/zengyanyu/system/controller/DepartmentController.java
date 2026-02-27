@@ -4,19 +4,24 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zengyanyu.system.commons.ResponseData;
 import com.zengyanyu.system.config.LogRecord;
-import com.zengyanyu.system.entity.Department;
-import com.zengyanyu.system.service.IDepartmentService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
-
 import javax.annotation.Resource;
 import java.util.List;
 
+import com.zengyanyu.system.service.IDepartmentService;
+import com.zengyanyu.system.entity.Department;
+
+import org.springframework.web.bind.annotation.RequestMapping;
+
+import org.springframework.web.bind.annotation.RestController;
+import com.zengyanyu.system.controller.BaseController;
+
 /**
  * @author zengyanyu
- * @since 2026-02-26
+ * @since 2026-02-27
  */
 @RestController
 @Api(tags = "部门控制器")
@@ -69,7 +74,6 @@ public class DepartmentController extends BaseController {
     @GetMapping("/page")
     public Page<Department> page(@RequestParam Integer pageNum, @RequestParam Integer pageSize) {
         QueryWrapper<Department> wrapper = new QueryWrapper<>();
-        wrapper.orderByDesc("id");
         return departmentService.page(new Page<>(pageNum, pageSize), wrapper);
     }
 }

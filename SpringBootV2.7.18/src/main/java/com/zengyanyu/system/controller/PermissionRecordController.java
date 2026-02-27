@@ -4,20 +4,15 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zengyanyu.system.commons.ResponseData;
 import com.zengyanyu.system.config.LogRecord;
+import com.zengyanyu.system.entity.PermissionRecord;
+import com.zengyanyu.system.service.IPermissionRecordService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
+
 import javax.annotation.Resource;
 import java.util.List;
-
-import com.zengyanyu.system.service.IPermissionRecordService;
-import com.zengyanyu.system.entity.PermissionRecord;
-
-import org.springframework.web.bind.annotation.RequestMapping;
-
-import org.springframework.web.bind.annotation.RestController;
-import com.zengyanyu.system.controller.BaseController;
 
 /**
  * @author zengyanyu
@@ -74,7 +69,6 @@ public class PermissionRecordController extends BaseController {
     @GetMapping("/page")
     public Page<PermissionRecord> page(@RequestParam Integer pageNum, @RequestParam Integer pageSize) {
         QueryWrapper<PermissionRecord> wrapper = new QueryWrapper<>();
-        wrapper.orderByDesc("id");
         return permissionRecordService.page(new Page<>(pageNum, pageSize), wrapper);
     }
 }
