@@ -4,6 +4,7 @@ server:
     context-path: /
 
 spring:
+  # postgresql配置
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     druid:
@@ -11,3 +12,24 @@ spring:
       username: postgres
       password: pgsql!@#12569088ht
       driver-class-name: org.postgresql.Driver
+
+      web-stat-filter:
+        enabled: true
+        url-pattern: /*
+        exclusions: "*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*"
+
+      #其他配置
+      initialSize: 5
+      minIdle: 5
+      maxActive: 20
+      maxWait: 60000
+      timeBetweenEvictionRunsMillis: 60000
+      minEvictableIdleTimeMillis: 300000
+      validationQuery: SELECT 1
+      testWhileIdle: true
+      testOnBorrow: false
+      testOnReturn: false
+      poolPreparedStatements: true
+      maxPoolPreparedStatementPerConnectionSize: 20
+      filters: stat,wall,slf4j
+      connectionProperties: druid.stat.mergeSql=true;druid.stat.slowSqlMillis=5000
