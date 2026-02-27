@@ -23,7 +23,7 @@ public class CodeGenerator {
     private static final String driverType = "mysql1";
 
     public static void main(String[] args) {
-        codeGenerate("department");
+        codeGenerate("dict", "dict_item", "menu", "role", "user_role", "permission_record");
     }
 
 
