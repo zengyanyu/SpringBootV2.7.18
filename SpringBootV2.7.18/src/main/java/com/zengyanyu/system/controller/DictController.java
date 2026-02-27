@@ -1,17 +1,32 @@
 package com.zengyanyu.system.controller;
 
+import cn.hutool.core.exceptions.ExceptionUtil;
+import com.alibaba.excel.EasyExcel;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zengyanyu.system.commons.ResponseData;
 import com.zengyanyu.system.config.LogRecord;
+import com.zengyanyu.system.dto.DictExportExcelDto;
 import com.zengyanyu.system.entity.Dict;
+import com.zengyanyu.system.framework.strategy.CustomColumnWidthStyleStrategy;
 import com.zengyanyu.system.service.IDictService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
 import javax.annotation.Resource;
+import java.io.IOException;
+import java.io.InputStream;
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -70,6 +85,45 @@ public class DictController extends BaseController {
     public Page<Dict> page(@RequestParam Integer pageNum, @RequestParam Integer pageSize) {
         QueryWrapper<Dict> wrapper = new QueryWrapper<>();
         return dictService.page(new Page<>(pageNum, pageSize), wrapper);
+    }
+
+    @LogRecord("导出Excel文件")
+    @ApiOperation("导出Excel文件")
+    @PostMapping("/exportExcel")
+    public void exportExcel() throws IOException {
+        response.setContentType("application/vnd.openxmlformats-officedocument.spreadsheetml.sheet");
+        response.setCharacterEncoding(StandardCharsets.UTF_8.name());
+        String fileName = URLEncoder.encode("字典列表", StandardCharsets.UTF_8.name());
+        response.setHeader(HttpHeaders.CONTENT_DISPOSITION, "attachment;filename=" + fileName + ".xlsx");
+
+        // 模拟测试数据
+        List<DictExportExcelDto> dtoList = new ArrayList<>();
+        List<Dict> dictList = dictService.list();
+        for (Dict dict : dictList) {
+            // 创建对象
+            DictExportExcelDto dto = new DictExportExcelDto();
+            BeanUtils.copyProperties(dict, dto);
+            dto.setExportDate(new Date());
+            dtoList.add(dto);
+        }
+        EasyExcel.write(response.getOutputStream(), DictExportExcelDto.class)
+                .registerWriteHandler(new CustomColumnWidthStyleStrategy())
+                .sheet("字典列表").doWrite(dtoList);
+    }
+
+    @LogRecord("导入Excel文件")
+    @ApiOperation("导入Excel文件")
+    @PostMapping("/importExcel")
+    public ResponseEntity<String> importExcel(@RequestParam("file") MultipartFile file) {
+        if (file.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("请选择上传的Excel文件！");
+        }
+        try (InputStream inputStream = file.getInputStream()) {
+            dictService.importExcel(inputStream);
+            return ResponseEntity.ok("Excel文件导入成功！");
+        } catch (IOException e) {
+            return ResponseEntity.status(500).body("Excel文件导入失败：" + ExceptionUtil.stacktraceToString(e));
+        }
     }
 }
 
