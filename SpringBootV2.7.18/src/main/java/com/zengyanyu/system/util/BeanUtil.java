@@ -65,7 +65,7 @@ public class BeanUtil {
         Person person = new Person("曾", 18, "男");
         Map<String, Object> stringObjectMap = bean2map(person);
         System.out.println(stringObjectMap);
-        Person o = map2bean(stringObjectMap, Person.class);
-        System.out.println("o = " + o);
+        Person person1 = map2bean(stringObjectMap, Person.class);
+        System.out.println(person1);
     }
 }
