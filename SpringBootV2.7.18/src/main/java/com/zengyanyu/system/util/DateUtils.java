@@ -1,5 +1,7 @@
 package com.zengyanyu.system.util;
 
+import cn.hutool.core.date.DateTime;
+import cn.hutool.core.date.DateUtil;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 
@@ -13,7 +15,7 @@ import java.util.Date;
  * @author zengyanyu
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
-public class DateUtils {
+public class DateUtils extends DateUtil {
 
     public static final SimpleDateFormat SIMPLE_DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
@@ -91,6 +93,21 @@ public class DateUtils {
      */
     public static Long getDateTimeToLong(LocalDateTime localDateTime) {
         return localDateTime.atZone(ZoneId.systemDefault()).toInstant().toEpochMilli();
+    }
+
+    public static void main(String[] args) {
+        // 获取一年的第几天
+        int i = DateUtils.dayOfYear(new Date());
+        System.out.println("i = " + i);
+        int i1 = DateUtils.dayOfMonth(new Date());
+        System.out.println("i1 = " + i1);
+
+        DateTime dateTime = DateUtils.beginOfMonth(new Date());
+        System.out.println("dateTime = " + dateTime);
+
+        DateTime dateTime1 = DateUtils.endOfMonth(new Date());
+        System.out.println("dateTime1 = " + dateTime1);
+
     }
 
 }
