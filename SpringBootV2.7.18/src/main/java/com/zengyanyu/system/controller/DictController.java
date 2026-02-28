@@ -9,6 +9,7 @@ import com.zengyanyu.system.config.LogRecord;
 import com.zengyanyu.system.dto.DictExportExcelDto;
 import com.zengyanyu.system.entity.Dict;
 import com.zengyanyu.system.framework.strategy.CustomColumnWidthStyleStrategy;
+import com.zengyanyu.system.query.DictQueryObject;
 import com.zengyanyu.system.service.IDictService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -82,9 +83,9 @@ public class DictController extends BaseController {
     @LogRecord("分页查询数据")
     @ApiOperation("分页查询数据")
     @GetMapping("/page")
-    public Page<Dict> page(@RequestParam Integer pageNum, @RequestParam Integer pageSize) {
+    public Page<Dict> page(DictQueryObject queryObject) {
         QueryWrapper<Dict> wrapper = new QueryWrapper<>();
-        return dictService.page(new Page<>(pageNum, pageSize), wrapper);
+        return dictService.page(new Page<>(queryObject.getPageNum(), queryObject.getPageSize()), wrapper);
     }
 
     @LogRecord("导出Excel文件")

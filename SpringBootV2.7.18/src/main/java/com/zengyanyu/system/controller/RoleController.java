@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zengyanyu.system.commons.ResponseData;
 import com.zengyanyu.system.config.LogRecord;
 import com.zengyanyu.system.entity.Role;
+import com.zengyanyu.system.query.RoleQueryObject;
 import com.zengyanyu.system.service.IRoleService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -67,9 +68,9 @@ public class RoleController extends BaseController {
     @LogRecord("分页查询数据")
     @ApiOperation("分页查询数据")
     @GetMapping("/page")
-    public Page<Role> page(@RequestParam Integer pageNum, @RequestParam Integer pageSize) {
+    public Page<Role> page(RoleQueryObject queryObject) {
         QueryWrapper<Role> wrapper = new QueryWrapper<>();
-        return roleService.page(new Page<>(pageNum, pageSize), wrapper);
+        return roleService.page(new Page<>(queryObject.getPageNum(), queryObject.getPageSize()), wrapper);
     }
 }
 

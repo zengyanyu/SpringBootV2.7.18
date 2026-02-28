@@ -5,6 +5,7 @@ import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zengyanyu.system.commons.ResponseData;
 import com.zengyanyu.system.config.LogRecord;
 import com.zengyanyu.system.entity.Department;
+import com.zengyanyu.system.query.DepartmentQueryObject;
 import com.zengyanyu.system.service.IDepartmentService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -67,9 +68,9 @@ public class DepartmentController extends BaseController {
     @LogRecord("部门分页查询数据")
     @ApiOperation("部门分页查询数据")
     @GetMapping("/page")
-    public Page<Department> page(@RequestParam Integer pageNum, @RequestParam Integer pageSize) {
+    public Page<Department> page(DepartmentQueryObject queryObject) {
         QueryWrapper<Department> wrapper = new QueryWrapper<>();
-        return departmentService.page(new Page<>(pageNum, pageSize), wrapper);
+        return departmentService.page(new Page<>(queryObject.getPageNum(), queryObject.getPageSize()), wrapper);
     }
 }
 
