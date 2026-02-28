@@ -1,6 +1,8 @@
 spring:
   profiles:
     active: dev
+  application:
+    name: springBootV2.7.18
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher

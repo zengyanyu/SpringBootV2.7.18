@@ -19,10 +19,10 @@ import java.util.List;
  * @author zengyanyu
  * @since 2026-02-27
  */
+@Slf4j
 @RestController
 @Api(tags = "部门控制器")
-@RequestMapping("/system/department")
-@Slf4j
+@RequestMapping("/department")
 public class DepartmentController extends BaseController {
 
     @Resource

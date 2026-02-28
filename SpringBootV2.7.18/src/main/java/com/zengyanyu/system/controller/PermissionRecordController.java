@@ -19,10 +19,10 @@ import java.util.List;
  * @author zengyanyu
  * @since 2026-02-27
  */
-@RestController
-@Api(tags = "控制器")
-@RequestMapping("/system/permission-record")
 @Slf4j
+@RestController
+@Api(tags = "权限记录控制器")
+@RequestMapping("/permission-record")
 public class PermissionRecordController extends BaseController {
 
     @Resource

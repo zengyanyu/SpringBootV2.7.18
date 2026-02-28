@@ -34,10 +34,10 @@ import java.util.List;
  * @author zengyanyu
  * @since 2026-02-27
  */
-@RestController
-@Api(tags = "控制器")
-@RequestMapping("/system/dict")
 @Slf4j
+@RestController
+@Api(tags = "字典控制器")
+@RequestMapping("/dict")
 public class DictController extends BaseController {
 
     @Resource
