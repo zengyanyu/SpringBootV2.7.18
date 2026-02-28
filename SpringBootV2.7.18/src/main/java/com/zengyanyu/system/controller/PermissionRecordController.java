@@ -28,6 +28,13 @@ public class PermissionRecordController extends BaseController {
     @Resource
     private IPermissionRecordService permissionRecordService;
 
+    @LogRecord("加载权限记录")
+    @ApiOperation("加载权限记录")
+    @PostMapping("/loadPermissionRecord")
+    public ResponseData loadPermissionRecord() {
+        return permissionRecordService.loadPermissionRecord();
+    }
+
     @LogRecord("保存或更新")
     @ApiOperation("保存或更新")
     @PostMapping("/save")

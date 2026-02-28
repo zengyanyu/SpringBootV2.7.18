@@ -20,4 +20,11 @@ public interface IPermissionRecordService extends IService<PermissionRecord> {
      */
     ResponseData saveOrUpdatePermissionRecord(PermissionRecord permissionRecord);
 
+    /**
+     * 加载权限记录
+     *
+     * @return
+     */
+    ResponseData loadPermissionRecord();
+
 }
