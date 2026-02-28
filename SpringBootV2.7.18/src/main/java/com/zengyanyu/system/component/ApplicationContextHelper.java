@@ -10,6 +10,8 @@ import java.util.Map;
 
 /**
  * spring 容器工具
+ *
+ * @author zengyanyu
  */
 @Component
 public class ApplicationContextHelper implements ApplicationContextAware {
