@@ -4,12 +4,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
-@Getter
-@Setter
-@NoArgsConstructor
 /**
  * @author zengyanyu
  */
+@Getter
+@Setter
+@NoArgsConstructor
 public class Person {
 
     private String name;
