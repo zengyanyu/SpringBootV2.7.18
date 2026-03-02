@@ -26,19 +26,12 @@ public class CodeGenerator {
         codeGenerate("department");
     }
 
-
     /**
      * 代码生成
      *
      * @param tableNames 表名集合（可变参数）
      */
     private static void codeGenerate(String... tableNames) {
-        // 使用MySQL驱动
-//        FastAutoGenerator.create(
-//                "jdbc:mysql://localhost:3306/hola?serverTimezone=GMT%2b8",
-//                "root",
-//                "admin")
-//        使用PostGreSQL驱动
         FastAutoGenerator.create(getDataSourceConfig())
                 .globalConfig(builder -> {
                     builder.author("zengyanyu") // 设置作者
