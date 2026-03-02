@@ -12,6 +12,9 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 @ApiModel("响应数据")
+/**
+ * @author zengyanyu
+ */
 public class ResponseData<T> {
 
     public static final String ERROR_CODE = "500";

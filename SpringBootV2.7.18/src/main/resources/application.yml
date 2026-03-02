@@ -3,6 +3,9 @@ spring:
     active: dev
   application:
     name: springBootV2.7.18
+  web:
+    resources:
+      static-locations: classpath:/static/,file:F:/data/source/
   mvc:
     pathmatch:
       matching-strategy: ant_path_matcher

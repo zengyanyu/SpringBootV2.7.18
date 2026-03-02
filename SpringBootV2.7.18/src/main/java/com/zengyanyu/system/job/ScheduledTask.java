@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class ScheduledTask {
 
-    @Scheduled(initialDelay = 1000, fixedDelay = 1000)
+    @Scheduled(initialDelay = 1000, fixedDelay = 1000 * 60)
     public void testTask() {
         log.info("com.zengyanyu.system.job.ScheduledTask 定时任务执行成功");
     }

@@ -7,6 +7,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
+/**
+ * @author zengyanyu
+ */
 public class Person {
 
     private String name;
