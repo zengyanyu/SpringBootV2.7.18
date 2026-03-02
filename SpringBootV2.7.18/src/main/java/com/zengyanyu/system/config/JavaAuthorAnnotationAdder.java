@@ -20,18 +20,13 @@ public class JavaAuthorAnnotationAdder {
     // 需要添加的@author注解行
     private static final String AUTHOR_ANNOTATION = " * @author " + AUTHOR_NAME;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         // 请替换为你要处理的根目录路径
         String rootDir = "D:\\Projects\\SpringBootV2.7.18\\src\\main\\java";
 
-        try {
-            // 遍历指定目录下的所有Java文件
-            traverseDirectory(Paths.get(rootDir));
-            System.out.println("处理完成！");
-        } catch (IOException e) {
-            System.err.println("处理过程中发生错误：" + e.getMessage());
-            e.printStackTrace();
-        }
+        // 遍历指定目录下的所有Java文件
+        traverseDirectory(Paths.get(rootDir));
+        System.out.println("处理完成！");
     }
 
     /**
