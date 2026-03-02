@@ -7,14 +7,14 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+/**
+ * @author zengyanyu
+ */
 @Getter
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
 @ApiModel("响应数据")
-/**
- * @author zengyanyu
- */
 public class ResponseData<T> {
 
     public static final String ERROR_CODE = "500";

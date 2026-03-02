@@ -15,8 +15,7 @@ import java.nio.charset.StandardCharsets;
 /**
  * Http工具类
  *
- * @author ZengYanyu
- * @Description
+ * @author zengyanyu
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class HttpUtil {

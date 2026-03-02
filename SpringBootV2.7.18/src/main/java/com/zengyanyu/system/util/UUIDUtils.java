@@ -8,7 +8,7 @@ import java.util.UUID;
 /**
  * UUID工具类
  *
- * @author 86134
+ * @author zengyanyu
  */
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class UUIDUtils {
