@@ -23,6 +23,11 @@ public class GlobalResponseHandler implements ResponseBodyAdvice<Object> {
      */
     @Override
     public boolean supports(MethodParameter returnType, Class<? extends HttpMessageConverter<?>> converterType) {
+        if (returnType.getDeclaringClass().isAnnotationPresent(IgnoreResponseAdvice.class)) {
+            return false;
+        } else if (returnType.getMethod().isAnnotationPresent(IgnoreResponseAdvice.class)) {
+            return false;
+        }
         return true;
     }
 
@@ -37,6 +42,11 @@ public class GlobalResponseHandler implements ResponseBodyAdvice<Object> {
      */
     @Override
     public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType, Class<? extends HttpMessageConverter<?>> selectedConverterType, ServerHttpRequest request, ServerHttpResponse response) {
+        String path = request.getURI().getPath();
+        // 判断是否为 Swagger 相关接口
+        if (path.contains("/swagger-resources") || path.contains("/v2/api-docs")) {
+            return body;
+        }
         return body;
     }
 }
