@@ -27,7 +27,7 @@ public class JavaAuthorAnnotationAdder {
 
     public static void main(String[] args) throws IOException {
         // 请替换为你要处理的根目录路径
-        String rootDir = "D:\\Projects\\SpringBootV2.7.18\\src\\main\\java";
+        String rootDir = System.getProperty("user.dir") + "/src/main/java";
 
         // 遍历指定目录下的所有Java文件
         traverseDirectory(Paths.get(rootDir));
