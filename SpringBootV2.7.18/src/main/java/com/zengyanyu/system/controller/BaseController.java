@@ -7,6 +7,8 @@ package com.zengyanyu.system.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.web.context.request.RequestContextHolder;
+import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
@@ -23,4 +25,16 @@ public class BaseController {
     protected HttpServletRequest request;
     @Resource
     protected HttpServletResponse response;
+
+    protected ServletRequestAttributes getServletRequestAttributes() {
+        return (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
+    }
+
+    protected HttpServletRequest getRequest() {
+        return getServletRequestAttributes().getRequest();
+    }
+
+    protected HttpServletResponse getResponse() {
+        return getServletRequestAttributes().getResponse();
+    }
 }
