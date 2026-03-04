@@ -5,18 +5,21 @@
  */
 package com.zengyanyu.system.entity;
 
+import java.io.Serializable;
+
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
-import lombok.Getter;
-import lombok.Setter;
+import io.swagger.annotations.ApiModelProperty;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import java.io.Serializable;
+
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * @author zengyanyu
- * @since 2026-02-27
+ * @since 2026-03-04
  */
 @Getter
 @Setter
