@@ -9,13 +9,15 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.io.Serializable;
+
 /**
  * @author zengyanyu
  */
 @Getter
 @Setter
 @NoArgsConstructor
-public class Person {
+public class Person implements Serializable {
 
     private String name;
 
