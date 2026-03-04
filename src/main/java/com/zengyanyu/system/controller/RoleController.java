@@ -9,10 +9,12 @@ import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.zengyanyu.system.commons.ResponseData;
 import com.zengyanyu.system.config.LogRecord;
+import com.zengyanyu.system.query.RoleQueryObject;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.*;
+
 import javax.annotation.Resource;
 import java.util.List;
 
@@ -78,7 +80,7 @@ public class RoleController extends BaseController {
     @LogRecord("分页查询数据")
     @ApiOperation("分页查询数据")
     @GetMapping("/page")
-    public Page<Role> page(QueryObject queryObject) {
+    public Page<Role> page(RoleQueryObject queryObject) {
         QueryWrapper<Role> wrapper = new QueryWrapper<>();
         return roleService.page(new Page<>(queryObject.getPageNum(), queryObject.getPageSize()), wrapper);
     }
