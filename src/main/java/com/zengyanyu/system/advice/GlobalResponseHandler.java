@@ -46,7 +46,9 @@ public class GlobalResponseHandler implements ResponseBodyAdvice<Object> {
      * @return
      */
     @Override
-    public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType, Class<? extends HttpMessageConverter<?>> selectedConverterType, ServerHttpRequest request, ServerHttpResponse response) {
+    public Object beforeBodyWrite(Object body, MethodParameter returnType, MediaType selectedContentType,
+                                  Class<? extends HttpMessageConverter<?>> selectedConverterType,
+                                  ServerHttpRequest request, ServerHttpResponse response) {
         String path = request.getURI().getPath();
         // 判断是否为 Swagger 相关接口
         if (path.contains("/swagger-resources") || path.contains("/v2/api-docs")) {
