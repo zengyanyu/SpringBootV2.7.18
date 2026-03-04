@@ -13,6 +13,7 @@ import java.util.List;
 
 import $!{package.Service}.${table.serviceName};
 import ${package.Entity}.${entity};
+import com.zengyanyu.system.query.QueryObject;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -90,9 +91,9 @@ public class ${table.controllerName} {
     @LogRecord("$!{table.comment}分页查询数据")
     @ApiOperation("$!{table.comment}分页查询数据")
     @GetMapping("/page")
-    public Page<${entity}> page(@RequestParam Integer pageNum, @RequestParam Integer pageSize) {
+    public Page<${entity}> page(QueryObject queryObject) {
         QueryWrapper<${entity}> wrapper = new QueryWrapper<>();
-        return ${table.entityPath}Service.page(new Page<>(pageNum, pageSize), wrapper);
+        return ${table.entityPath}Service.page(new Page<>(queryObject.getPageNum(), queryObject.getPageSize()), wrapper);
     }
 }
 

@@ -13,7 +13,7 @@ import com.zengyanyu.system.commons.ResponseData;
  * 部门 服务类
  *
  * @author zengyanyu
- * @since 2026-02-27
+ * @since 2026-03-04
  */
 public interface IDepartmentService extends IService<Department> {
 

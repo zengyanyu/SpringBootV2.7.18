@@ -31,12 +31,12 @@ import java.util.List;
 
 /**
  * @author zengyanyu
- * @since 2026-02-27
+ * @since 2026-03-04
  */
-@Slf4j
 @RestController
 @Api(tags = "部门控制器")
-@RequestMapping("/department")
+@RequestMapping("/system/department")
+@Slf4j
 public class DepartmentController extends BaseController {
 
     @Resource

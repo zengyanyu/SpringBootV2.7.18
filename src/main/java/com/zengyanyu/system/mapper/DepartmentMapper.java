@@ -13,7 +13,7 @@ import org.apache.ibatis.annotations.Mapper;
  * 部门 Mapper 接口
  *
  * @author zengyanyu
- * @since 2026-02-27
+ * @since 2026-03-04
  */
 @Mapper
 public interface DepartmentMapper extends BaseMapper<Department> {

@@ -19,7 +19,7 @@ import java.io.Serializable;
  * 部门
  *
  * @author zengyanyu
- * @since 2026-02-27
+ * @since 2026-03-04
  */
 @Getter
 @Setter
