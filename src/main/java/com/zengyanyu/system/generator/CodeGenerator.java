@@ -37,6 +37,7 @@ public class CodeGenerator {
     private static void codeGenerate(String... tableNames) {
         // 使用自定义entity模板
         FastAutoGenerator.create(getDataSourceConfig())
+                // 全局配置
                 .globalConfig(builder -> {
                     builder.author("zengyanyu") // 设置作者
                             .commentDate("yyyy-MM-dd")
@@ -49,23 +50,44 @@ public class CodeGenerator {
                 })
                 // 包配置
                 .packageConfig(builder ->
-                        builder.parent("com.zengyanyu.system") // 设置父包名
-                                .moduleName("") // 设置父包模块名
+                        // 设置父包名
+                        builder.parent("com.zengyanyu.system")
+                                // 设置父包模块名
+                                .moduleName("")
                                 .entity("entity")
                                 .mapper("mapper")
+                                .xml("mapper.xml")
                                 .service("service")
                                 .serviceImpl("service.impl")
                                 .controller("controller")
                                 .pathInfo(Collections.singletonMap(OutputFile.mapperXml,
-                                        System.getProperty("user.dir") + "/src/main/resources/mapper/")) // 设置mapperXml生成路径
+                                        // 设置mapperXml生成路径
+                                        System.getProperty("user.dir") + "/src/main/resources/mapper/"))
                 )
                 // 策略配置
                 .strategyConfig(builder -> {
+                    // 设置需要生成的表名
+                    builder.addInclude(tableNames);
+
+                    // 建立Entity
+                    builder.entityBuilder()
+                            // 启用table字段注解，会显示@TableName
+                            // .enableTableFieldAnnotation()
+                            // 继承父类
+                            // .superClass(BaseEntity.class)
+                            // 添加父类公共字段
+                            .addSuperEntityColumns("create_time", "create_by", "update_time", "update_by")
+                            .enableLombok();
+
                     // 建立Mapper
-                    builder.mapperBuilder().enableMapperAnnotation()// 启用Mapper注解
-                            // .enableBaseResultMap()// 通用查询映射结果
-                            // .enableBaseColumnList()// 通用查询结果列
-                            .build();
+                    builder.mapperBuilder()
+                            // 启用Mapper注解
+                            .enableMapperAnnotation();
+
+                    // 建立Service
+//                    builder.serviceBuilder()
+//                            .superServiceClass(IService.class);
+
                     // 建立Controller
                     builder.controllerBuilder()
                             // 开启驼峰转连字符
@@ -74,17 +96,7 @@ public class CodeGenerator {
                             // 开启生成@RestController控制器
                             .enableRestStyle();
 
-                    // 设置需要生成的表名
-                    builder.addInclude(tableNames);
-                    // 建立Entity
-                    builder.entityBuilder()
-// 启用table字段注解，会显示@TableName
-//                            .enableTableFieldAnnotation()
-                            // 继承父类
-//                            .superClass(BaseEntity.class)
-                            // 不生成的字段（这4个字段，在BaseEntity中已经存在，不在子类中生成，使用继承的方式）
-                            .addSuperEntityColumns("create_time", "create_by", "update_time", "update_by")
-                            .enableLombok();
+                    builder.build();
                 })
                 .templateConfig(builder -> {
                     builder.entity("templates/entity.java");
