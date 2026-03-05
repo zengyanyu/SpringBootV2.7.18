@@ -30,6 +30,7 @@ import ${superControllerClassPackage};
  * @author ${author}
  * @since ${date}
  */
+@Slf4j
 #if(${restControllerStyle})
 @RestController
 @Api(tags = "$!{table.comment}控制器")
@@ -37,7 +38,6 @@ import ${superControllerClassPackage};
 @Controller
 #end
 @RequestMapping("#if(${package.ModuleName})/${package.ModuleName}#end/#if(${controllerMappingHyphenStyle})${controllerMappingHyphen}#else${table.entityPath}#end")
-@Slf4j
 #if(${kotlin})
 class ${table.controllerName}#if(${superControllerClass}) : ${superControllerClass}()#end
 

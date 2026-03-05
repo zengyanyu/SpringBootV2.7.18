@@ -8,14 +8,12 @@ package com.zengyanyu.system.generator;
 import com.baomidou.mybatisplus.generator.FastAutoGenerator;
 import com.baomidou.mybatisplus.generator.config.DataSourceConfig;
 import com.baomidou.mybatisplus.generator.config.OutputFile;
-import com.baomidou.mybatisplus.generator.config.TemplateConfig;
 import com.baomidou.mybatisplus.generator.config.querys.MySqlQuery;
 import com.baomidou.mybatisplus.generator.config.querys.PostgreSqlQuery;
 import com.baomidou.mybatisplus.generator.engine.VelocityTemplateEngine;
 import com.zengyanyu.system.controller.BaseController;
 
 import java.util.Collections;
-import java.util.function.Consumer;
 
 /**
  * 代码生成器工具类
@@ -37,6 +35,7 @@ public class CodeGenerator {
      * @param tableNames 表名集合（可变参数）
      */
     private static void codeGenerate(String... tableNames) {
+        // 使用自定义entity模板
         FastAutoGenerator.create(getDataSourceConfig())
                 .globalConfig(builder -> {
                     builder.author("zengyanyu") // 设置作者
@@ -50,9 +49,13 @@ public class CodeGenerator {
                 })
                 // 包配置
                 .packageConfig(builder ->
-                        builder.parent("com.zengyanyu") // 设置父包名
-                                .moduleName("system") // 设置父包模块名
-                                .controller("controller")// 设置控制器生成路径，他会自己拼接父包名
+                        builder.parent("com.zengyanyu.system") // 设置父包名
+                                .moduleName("") // 设置父包模块名
+                                .entity("entity")
+                                .mapper("mapper")
+                                .service("service")
+                                .serviceImpl("service.impl")
+                                .controller("controller")
                                 .pathInfo(Collections.singletonMap(OutputFile.mapperXml,
                                         System.getProperty("user.dir") + "/src/main/resources/mapper/")) // 设置mapperXml生成路径
                 )
@@ -64,27 +67,27 @@ public class CodeGenerator {
                             // .enableBaseColumnList()// 通用查询结果列
                             .build();
                     // 建立Controller
-                    builder.controllerBuilder().enableHyphenStyle() // 开启驼峰转连字符
+                    builder.controllerBuilder()
+                            // 开启驼峰转连字符
+                            .enableHyphenStyle()
                             .superClass(BaseController.class)
-                            .enableRestStyle(); // 开启生成@RestController控制器
+                            // 开启生成@RestController控制器
+                            .enableRestStyle();
 
                     // 设置需要生成的表名
                     builder.addInclude(tableNames);
                     // 建立Entity
                     builder.entityBuilder()
-//                            .enableTableFieldAnnotation()// 启用table字段注解，会显示@TableName
+// 启用table字段注解，会显示@TableName
+//                            .enableTableFieldAnnotation()
                             // 继承父类
 //                            .superClass(BaseEntity.class)
                             // 不生成的字段（这4个字段，在BaseEntity中已经存在，不在子类中生成，使用继承的方式）
                             .addSuperEntityColumns("create_time", "create_by", "update_time", "update_by")
                             .enableLombok();
                 })
-                .templateConfig(new Consumer<TemplateConfig.Builder>() {
-                    // 使用自定义entity模板
-                    @Override
-                    public void accept(TemplateConfig.Builder builder) {
-                        builder.entity("templates/entity.java");
-                    }
+                .templateConfig(builder -> {
+                    builder.entity("templates/entity.java");
                 })
                 // 默认的是Velocity引擎模板
                 .templateEngine(new VelocityTemplateEngine())

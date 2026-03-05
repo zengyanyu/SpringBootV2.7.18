@@ -1,8 +1,3 @@
-/*
- * Copyright (c) 2026, 曾衍育 All rights reserved.
- * 自定义License声明
- * ZENGYANYU PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
- */
 package com.zengyanyu.system.entity;
 
 import java.io.Serializable;
@@ -20,7 +15,7 @@ import lombok.Setter;
  * 部门
  *
  * @author zengyanyu
- * @since 2026-03-04
+ * @since 2026-03-05
  */
 @Getter
 @Setter

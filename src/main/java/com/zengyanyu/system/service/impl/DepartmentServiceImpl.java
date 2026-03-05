@@ -1,8 +1,3 @@
-/*
- * Copyright (c) 2026, 曾衍育 All rights reserved.
- * 自定义License声明
- * ZENGYANYU PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
- */
 package com.zengyanyu.system.service.impl;
 
 import com.zengyanyu.system.entity.Department;
@@ -16,7 +11,7 @@ import com.zengyanyu.system.commons.ResponseData;
  * 部门 服务实现类
  *
  * @author zengyanyu
- * @since 2026-03-04
+ * @since 2026-03-05
  */
 @Service
 public class DepartmentServiceImpl extends ServiceImpl<DepartmentMapper, Department> implements IDepartmentService {
