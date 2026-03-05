@@ -38,15 +38,12 @@ import ${superControllerClassPackage};
 @Controller
 #end
 @RequestMapping("#if(${package.ModuleName})/${package.ModuleName}#end/#if(${controllerMappingHyphenStyle})${controllerMappingHyphen}#else${table.entityPath}#end")
-#if(${kotlin})
-class ${table.controllerName}#if(${superControllerClass}) : ${superControllerClass}()#end
 
-#else
-    #if(${superControllerClass})
+#if(${superControllerClass})
 public class ${table.controllerName} extends ${superControllerClass} {
-    #else
+#else
 public class ${table.controllerName} {
-    #end
+#end
 
     @Resource
     private ${table.serviceName} ${table.entityPath}Service;
@@ -96,5 +93,3 @@ public class ${table.controllerName} {
         return ${table.entityPath}Service.page(new Page<>(queryObject.getPageNum(), queryObject.getPageSize()), wrapper);
     }
 }
-
-#end

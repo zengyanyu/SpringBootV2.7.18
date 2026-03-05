@@ -28,6 +28,7 @@ import java.util.List;
 @RestController
 @Api(tags = "部门控制器")
 @RequestMapping("/department")
+
 public class DepartmentController extends BaseController {
 
     @Resource
@@ -78,4 +79,3 @@ public class DepartmentController extends BaseController {
         return departmentService.page(new Page<>(queryObject.getPageNum(), queryObject.getPageSize()), wrapper);
     }
 }
-
