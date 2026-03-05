@@ -28,7 +28,6 @@ import java.util.List;
 @RestController
 @Api(tags = "部门控制器")
 @RequestMapping("/department")
-
 public class DepartmentController extends BaseController {
 
     @Resource
