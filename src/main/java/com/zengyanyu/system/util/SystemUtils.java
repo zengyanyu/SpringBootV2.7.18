@@ -8,13 +8,15 @@ package com.zengyanyu.system.util;
 /**
  * @author zengyanyu
  */
-public class PathUtils {
+public class SystemUtils {
 
-    private PathUtils() {
+    private SystemUtils() {
     }
 
     /**
      * 系统跟目录
      */
     public static final String ROOT_DIR = System.getProperty("user.dir");
+
+    public static final String SYS_NAME = System.getProperty("os.name");
 }
