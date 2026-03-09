@@ -5,8 +5,11 @@ package com.zengyanyu.system.util;
  */
 public class PathUtils {
 
+    private PathUtils() {
+    }
+
     /**
      * 系统跟路径
      */
-    private static final String ROOT_PATH = System.getProperty("user.dir");
+    public static final String ROOT_PATH = System.getProperty("user.dir");
 }
