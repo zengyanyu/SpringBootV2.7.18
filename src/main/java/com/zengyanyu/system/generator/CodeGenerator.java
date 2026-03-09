@@ -5,6 +5,7 @@
  */
 package com.zengyanyu.system.generator;
 
+import com.baomidou.mybatisplus.annotation.IdType;
 import com.baomidou.mybatisplus.generator.FastAutoGenerator;
 import com.baomidou.mybatisplus.generator.config.DataSourceConfig;
 import com.baomidou.mybatisplus.generator.config.OutputFile;
@@ -74,8 +75,8 @@ public class CodeGenerator {
 
                     // 建立Entity
                     builder.entityBuilder()
-                            // 启用table字段注解，会显示@TableName
-                            // .enableTableFieldAnnotation()
+                            .idType(IdType.AUTO) // 主键类型（自增）
+//                            .formatFileName("%s") // 格式化实体名称，%s 表名占位符
                             // 继承父类
                             // .superClass(BaseEntity.class)
                             // 添加父类公共字段
