@@ -166,21 +166,6 @@
     </dependencies>
 
     <build>
-
-        <!-- 配置资源目录和排除规则 -->
-        <resources>
-            <resource>
-                <!-- 指定主资源目录 -->
-                <directory>src/main/resources</directory>
-                <!-- 开启过滤（可选，如不需要替换占位符可设为false） -->
-                <filtering>false</filtering>
-                <!-- 排除 templates 目录下的所有文件 -->
-                <excludes>
-                    <exclude>templates/**/*</exclude>
-                </excludes>
-            </resource>
-        </resources>
-
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

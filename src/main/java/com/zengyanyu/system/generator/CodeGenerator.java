@@ -25,6 +25,8 @@ public class CodeGenerator {
     // 数据库驱动类型
     private static final String driverType = "mysql1";
 
+    private static final String ROOT_PATH = System.getProperty("user.dir");
+
     public static void main(String[] args) {
         codeGenerate("department");
     }
@@ -44,7 +46,7 @@ public class CodeGenerator {
                             .enableSwagger() // 开启swagger模式
                             .fileOverride() // 覆盖已生成文件
                             // 指定输出目录
-                            .outputDir(System.getProperty("user.dir") + "/src/main/java/")
+                            .outputDir(ROOT_PATH + "/src/main/java/")
                             // 生成代码后不自动打开目录
                             .disableOpenDir();
                 })
@@ -62,7 +64,7 @@ public class CodeGenerator {
                                 .controller("controller")
                                 .pathInfo(Collections.singletonMap(OutputFile.mapperXml,
                                         // 设置mapperXml生成路径
-                                        System.getProperty("user.dir") + "/src/main/resources/mapper/"))
+                                        ROOT_PATH + "/src/main/resources/mapper/"))
                 )
                 // 策略配置
                 .strategyConfig(builder -> {
