@@ -42,10 +42,10 @@ public class CodeGenerator {
         FastAutoGenerator.create(getDataSourceConfig())
                 // 全局配置
                 .globalConfig(builder -> {
-                    builder.author("zengyanyu") // 设置作者
+                    builder.author("zengyanyu")
                             .commentDate("yyyy-MM-dd")
-                            .enableSwagger() // 开启swagger模式
-                            .fileOverride() // 覆盖已生成文件
+                            .enableSwagger()
+                            .fileOverride()
                             // 指定输出目录
                             .outputDir(ROOT_DIR + "/src/main/java/")
                             // 生成代码后不自动打开目录
