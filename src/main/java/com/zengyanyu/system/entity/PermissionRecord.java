@@ -7,6 +7,7 @@ package com.zengyanyu.system.entity;
 
 import com.baomidou.mybatisplus.annotation.TableName;
 import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -26,16 +27,19 @@ import java.io.Serializable;
 public class PermissionRecord implements Serializable {
 
     @Id
+    @ApiModelProperty("主键ID")
     private String id;
 
-    @Id
+    @ApiModelProperty("API操作名称")
     private String apiOperationName;
 
+    @ApiModelProperty("方法名称")
     private String methodName;
 
+    @ApiModelProperty("请求地址")
     private String path;
 
+    @ApiModelProperty("请求方法")
     private String requestMethod;
-
 
 }
