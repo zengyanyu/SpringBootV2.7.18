@@ -9,7 +9,7 @@ public class PathUtils {
     }
 
     /**
-     * 系统跟路径
+     * 系统跟目录
      */
-    public static final String ROOT_PATH = System.getProperty("user.dir");
+    public static final String ROOT_DIR = System.getProperty("user.dir");
 }
