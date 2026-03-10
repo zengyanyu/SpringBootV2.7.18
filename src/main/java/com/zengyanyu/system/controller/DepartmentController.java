@@ -39,6 +39,10 @@ import java.util.List;
 @RequestMapping("/department")
 public class DepartmentController extends BaseController {
 
+    public DepartmentController() {
+        System.out.println("创建departmentController的bean对象,项目启动时创建");
+    }
+
     @Resource
     private IDepartmentService departmentService;
 
