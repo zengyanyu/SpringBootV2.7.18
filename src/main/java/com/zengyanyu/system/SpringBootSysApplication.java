@@ -20,6 +20,7 @@ import java.net.InetAddress;
  */
 @Slf4j
 @EnableScheduling
+// 具备组件扫描功能,但是默认扫描的是启动类所在包及其子包
 @SpringBootApplication
 public class SpringBootSysApplication {
 
