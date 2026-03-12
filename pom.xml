@@ -38,7 +38,7 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-            <version>${spring-boot.version}</version>
+            <!--<version>${spring-boot.version}</version>-->
             <exclusions>
                 <exclusion>
                     <groupId>org.springframework.boot</groupId>
@@ -49,13 +49,13 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-test</artifactId>
-            <version>${spring-boot.version}</version>
+            <!--<version>${spring-boot.version}</version>-->
             <scope>test</scope>
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-jpa</artifactId>
-            <version>${spring-boot.version}</version>
+            <!--<version>${spring-boot.version}</version>-->
             <exclusions>
                 <!-- 排除 log4j2 相关依赖 -->
                 <exclusion>
@@ -67,7 +67,15 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-data-redis</artifactId>
-            <version>${spring-boot.version}</version>
+            <!--<version>${spring-boot.version}</version>-->
+        </dependency>
+        <!-- 热部署 -->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-devtools</artifactId>
+            <!--<version>${spring-boot.version}</version>-->
+            <scope>runtime</scope>
+            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>org.mybatis.spring.boot</groupId>
@@ -78,14 +86,6 @@
             <groupId>com.alibaba</groupId>
             <artifactId>druid-spring-boot-starter</artifactId>
             <version>1.1.21</version>
-        </dependency>
-        <!-- 热部署 -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-devtools</artifactId>
-            <version>${spring-boot.version}</version>
-            <scope>runtime</scope>
-            <optional>true</optional>
         </dependency>
         <!-- mybatis-plus代码生成器 -->
         <dependency>
@@ -138,6 +138,18 @@
             <version>${postgresql.version}</version>
             <scope>runtime</scope>
         </dependency>
+        <!-- Hibernate 核心依赖 -->
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-core</artifactId>
+            <version>${hibernate.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>${junit.version}</version>
+            <scope>test</scope>
+        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
@@ -176,18 +188,6 @@
             <groupId>org.json</groupId>
             <artifactId>json</artifactId>
             <version>20210307</version>
-        </dependency>
-        <!-- Hibernate 核心依赖 -->
-        <dependency>
-            <groupId>org.hibernate</groupId>
-            <artifactId>hibernate-core</artifactId>
-            <version>${hibernate.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
         </dependency>
     </dependencies>
 
