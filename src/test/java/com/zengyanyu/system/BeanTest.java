@@ -11,7 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import javax.annotation.Resource;
 
 @RunWith(SpringRunner.class) // JUnit4 必须加
-@SpringBootTest/*(classes = SpringBootSysApplication.class)*/
+@SpringBootTest
 public class BeanTest {
 
     @Resource
