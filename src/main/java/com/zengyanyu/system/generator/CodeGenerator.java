@@ -118,12 +118,12 @@ public class CodeGenerator {
     private static DataSourceConfig.Builder getDataSourceConfig() {
         // 使用MySQL驱动
         if ("mysql".equals(driverType)) {
-            return new DataSourceConfig.Builder("jdbc:mysql://localhost:3306/hola?serverTimezone=GMT%2b8",
+            return new DataSourceConfig.Builder("jdbc:mysql://localhost:3306/test?useSSL=false&useUnicode=true&characterEncoding=utf-8&serverTimezone=Asia/Shanghai",
                     "root", "admin")
                     .dbQuery(new MySqlQuery());
         }
         // 使用PostGreSQL驱动
-        return new DataSourceConfig.Builder("jdbc:postgresql://192.168.244.131:15432/test_sys",
+        return new DataSourceConfig.Builder("jdbc:postgresql://192.168.244.131:15432/test_sys?useUnicode=true&characterEncoding=UTF-8&allowMultiQueries=true&serverTimezone=Asia/Shanghai",
                 "postgres", "pgsql!@#12569088ht")
                 .dbQuery(new PostgreSqlQuery());
     }
