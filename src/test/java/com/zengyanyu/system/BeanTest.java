@@ -1,6 +1,6 @@
 package com.zengyanyu.system;
 
-import com.zengyanyu.system.component.ApplicationContextHelper;
+import com.zengyanyu.system.util.SpringContextUtil;
 import com.zengyanyu.system.controller.DictController;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -26,7 +26,7 @@ public class BeanTest {
             Object deptController = context.getBean("departmentController");
             System.out.println("deptController = " + deptController);
             System.out.println("***********************************");
-            Object departmentController = ApplicationContextHelper.getBean("departmentController");
+            Object departmentController = SpringContextUtil.getBean("departmentController");
             System.out.println("departmentController = " + departmentController);
         }
     }

@@ -3,7 +3,7 @@
  * 自定义License声明
  * ZENGYANYU PROPRIETARY/CONFIDENTIAL. Use is subject to license terms.
  */
-package com.zengyanyu.system.component;
+package com.zengyanyu.system.util;
 
 import org.springframework.beans.BeansException;
 import org.springframework.context.ApplicationContext;
@@ -18,13 +18,13 @@ import java.util.Map;
  * @author zengyanyu
  */
 @Component
-public class ApplicationContextHelper implements ApplicationContextAware {
+public class SpringContextUtil implements ApplicationContextAware {
 
     private static ApplicationContext applicationContext;
 
     @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
-        ApplicationContextHelper.applicationContext = applicationContext;
+        SpringContextUtil.applicationContext = applicationContext;
     }
 
     /**
