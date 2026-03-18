@@ -6,6 +6,8 @@
 package com.zengyanyu.system.util;
 
 import com.zengyanyu.system.dto.Person;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 import java.beans.BeanInfo;
 import java.beans.Introspector;
@@ -17,10 +19,8 @@ import java.util.Map;
 /**
  * @author zengyanyu
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class BeanUtil {
-
-    private BeanUtil() {
-    }
 
     /**
      * javaBaen对象转换为map

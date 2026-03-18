@@ -5,13 +5,14 @@
  */
 package com.zengyanyu.system.util;
 
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
+
 /**
  * @author zengyanyu
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class SystemUtils {
-
-    private SystemUtils() {
-    }
 
     /**
      * 系统跟目录

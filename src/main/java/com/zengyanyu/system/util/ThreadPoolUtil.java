@@ -6,6 +6,8 @@
 package com.zengyanyu.system.util;
 
 import com.zengyanyu.system.bean.DefaultThreadFactory;
+import lombok.AccessLevel;
+import lombok.NoArgsConstructor;
 
 import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
@@ -14,6 +16,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * @author zengyanyu
  */
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class ThreadPoolUtil {
 
     /**
